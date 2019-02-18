@@ -9,10 +9,15 @@
         [Key]
         public int Id { get; set; }
         [Required]
+        [StringLength(maximumLength: 50, MinimumLength = 3, ErrorMessage = "Field {0} must be between {2} and {1} characters length.")]
         public string Name { get; set; }
         [Required]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "{0} not valid")]        
         public string Email { get; set; }
         [Required]
+        [DataType(DataType.Password)]
+        [StringLength(maximumLength: 50, MinimumLength = 3, ErrorMessage = "Field {0} must be between {2} and {1} characters length.")]
         public string Password { get; set; }
 
         public DateTime CreatedOn { get; set; }
