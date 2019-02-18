@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity;
 
     public class Branch
     {
@@ -16,5 +17,14 @@
         public DateTime CreatedOn { get; set; }
         [Required]
         public int UserId { get; set; }
+    }
+
+    public class BranchDBContext : DbContext
+    {
+        public BranchDBContext() : base("name=BranchDBContext")
+        {
+        }
+
+        public System.Data.Entity.DbSet<BankDB.Models.User> Users { get; set; }
     }
 }

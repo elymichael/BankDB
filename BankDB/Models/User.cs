@@ -1,9 +1,13 @@
 ﻿namespace BankDB.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Web;
+    
     public class User
     {
         [Key]
@@ -21,5 +25,14 @@
         public string Password { get; set; }
 
         public DateTime CreatedOn { get; set; }
+    }
+
+    public class UserDBContext : DbContext
+    {
+        public UserDBContext() : base("name=UserDBContext")
+        {
+        }
+
+        public System.Data.Entity.DbSet<BankDB.Models.User> Users { get; set; }
     }
 }
