@@ -1,7 +1,8 @@
 ﻿angular
     .module('app')
-    .controller('HomeController', function HomeController($scope, authService, $state) {
+    .controller('HomeController', function HomeController($scope, authService, $state, ngAuthSettings) {
         $scope.message = "";
+        $scope.id = 0;
 
         $scope.success = function () {
             
@@ -10,7 +11,10 @@
         $scope.cancel = function () {
             
         };
-
+        
+        $scope.loadBanks = function () {
+            $scope.baBanks = [];
+        };
 
         // Log out function.
         $scope.logOut = function () {
@@ -28,4 +32,5 @@
                 $state.go('in.home');        
             }            
         }
+        $scope.loadBanks();
     });

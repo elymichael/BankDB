@@ -17,11 +17,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#login">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
                         Login
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" href="#" data-toggle="modal" data-target="#register">
                     <a class="nav-link" ui-sref="">
                         Register
                     </a>
@@ -35,23 +35,34 @@
         </div>
     </div>
 </nav>
-<form name="theForm" id="theForm" role="form" novalidate>
-    <!-- The Modal -->
-    <div class="modal" id="login">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Login</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
+<div class="modal" id="login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form name="formLogin" id="formLogin" role="form" novalidate>
                     <c-login callback-success="success()" callback-cancel="cancel()"></c-login>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</div>
+<div class="modal" id="register">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Register</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formRegister" name="formRegister" role="form" novalidate>
+                    <c-register id="id" callback-success="success()" callback-cancel="cancel()"></c-register>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

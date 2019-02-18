@@ -5,7 +5,7 @@
         require: {
             form: '^^form'
         },
-        controller: function ($http, URI, authService, appService, $state) {
+        controller: function ($http, ngAuthSettings, authService, appService, $state) {
             var self = this;
 
             self.$onInit = function () {                

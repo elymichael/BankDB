@@ -1,10 +1,43 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+﻿<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="text" placeholder="Name..." class="form-control" ng-Model="$ctrl.data.name" name="name" id="name" required autofocus />
+            </div>
+            <div ng-show="$ctrl.form.name.$touched && $ctrl.form.name.$invalid" class="help-block with-errors">Invalid Name information</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" placeholder="Email Address..." class="form-control" ng-Model="$ctrl.data.email" name="email" id="email" required />
+            </div>
+            <div ng-show="$ctrl.form.email.$touched && $ctrl.form.email.$invalid" class="help-block with-errors">Invalid email address</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" placeholder="Password..." class="form-control" ng-Model="$ctrl.data.password" name="password" id="password" ng-minlength="8" required />
+            </div>
+            <div ng-show="$ctrl.form.contrasena.$touched && $ctrl.form.contrasena.$invalid" class="help-block with-errors">Invalid Password</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" placeholder="Confirm Password..." class="form-control" ng-Model="$ctrl.data.confirmPassword" name="confirmPassword" id="confirmPassword" ng-minlength="8" required />
+            </div>
+            <div ng-show="$ctrl.form.confirmPassword.$touched && $ctrl.form.confirmPassword.$invalid" class="help-block with-errors">Invalid Password</div>
+        </div>
+        <div class="form-group">
+            <button ng-disabled="$ctrl.form.$invalid || $ctrl.isLoading" type="submit" class="btn btn-primary" ng-click="$ctrl.save()">Register</button>
+        </div>
+    </div>
+</div>
