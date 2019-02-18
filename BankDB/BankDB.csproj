@@ -122,6 +122,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Web.config" />
     <Content Include="web\css\assets\bootstrap.min.css" />
     <Content Include="web\css\assets\font-awesome.min.css" />
@@ -131,12 +132,18 @@
     <Content Include="web\css\assets\toggles-full.css" />
     <Content Include="web\css\styles.css" />
     <Content Include="web\fonts\fontawesome-webfont.svg" />
+    <Content Include="web\images\favicon.ico" />
     <Content Include="web\include\footer.html" />
     <Content Include="web\include\header.html" />
     <Content Include="web\index.html" />
     <Content Include="web\scripts\app\app.js" />
+    <Content Include="web\scripts\app\Components\cGridColumns\c-grid-column.html" />
+    <Content Include="web\scripts\app\Components\cGridColumns\c-grid-column.js" />
+    <Content Include="web\scripts\app\Components\cLogin\c-login.html" />
+    <Content Include="web\scripts\app\Components\cLogin\c-login.js" />
+    <Content Include="web\scripts\app\Components\cRegister\c-register.html" />
+    <Content Include="web\scripts\app\Components\cRegister\c-register.js" />
     <Content Include="web\scripts\app\Controllers\HomeController.js" />
-    <Content Include="web\scripts\app\Controllers\LoginController.js" />
     <Content Include="web\scripts\app\Controllers\MenuController.js" />
     <Content Include="web\scripts\app\directives\cdContainer\cd-container.html" />
     <Content Include="web\scripts\app\directives\cdContainer\cd-container.js" />
@@ -156,7 +163,6 @@
     <Content Include="web\scripts\lib\dirPagination.js" />
     <Content Include="web\scripts\lib\ngStorage.min.js" />
     <Content Include="web\views\home.html" />
-    <Content Include="web\views\login.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -182,7 +188,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="web\scripts\app\Components\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

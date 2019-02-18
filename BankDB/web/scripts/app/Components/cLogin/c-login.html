@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" placeholder="Correo electrónico..." class="form-control" ng-Model="$ctrl.loginData.userName" name="correo" id="correo" required autofocus />
+            </div>
+            <div ng-show="$ctrl.form.correo.$touched && $ctrl.form.correo.$invalid" class="help-block with-errors">correo es inválido</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" placeholder="Contraseña..." class="form-control" ng-Model="$ctrl.loginData.password" name="contrasena" id="contrasena" ng-minlength="8" required />
+            </div>
+            <div ng-show="$ctrl.form.contrasena.$touched && $ctrl.form.contrasena.$invalid" class="help-block with-errors">Contraseña es inválida</div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="recordar" ng-model="$ctrl.loginData.rememberMe">
+            <label class="form-check-label" for="recordar">Recordar</label>
+        </div>
+        <div class="form-group">
+            <button ng-disabled="$ctrl.form.$invalid || $ctrl.isLoading" type="submit" class="btn btn-primary" ng-click="$ctrl.login()">Login</button>
+        </div>
+    </div>
+</div>

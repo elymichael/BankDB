@@ -29,7 +29,6 @@ angular
                     }
                 }
                 authService.logOut();
-                $state.go('in.login');
             }
             return $q.reject(rejection);
         }
