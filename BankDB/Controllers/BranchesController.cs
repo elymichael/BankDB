@@ -14,8 +14,14 @@ namespace BankDB.Controllers
 {
     public class BranchesController : ApiController
     {
-        private BankDBEntities db = new BankDBEntities();
+        private IBankDBEntities db = new BankDBEntities();
 
+        public BranchesController() { }
+
+        public BranchesController(IBankDBEntities ctx)
+        {
+            db = ctx;
+        }
         // GET: api/Branches
         public IQueryable<Branch> GetBranches()
         {
@@ -45,9 +51,7 @@ namespace BankDB.Controllers
             }
 
             db.proc_SaveBranch(branch.Id, branch.BankId, branch.Name, branch.Street, branch.ZipCode, branch.UserId);
-            //db.Branches.Add(branch);
-            //db.SaveChanges();
-
+            
             return CreatedAtRoute("DefaultApi", new { id = branch.Id }, branch);
         }
 

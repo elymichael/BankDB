@@ -213,6 +213,7 @@
     <Compile Include="Models\Branch.cs">
       <DependentUpon>BankDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IBankDBEntities.cs" />
     <Compile Include="Models\Rating.cs">
       <DependentUpon>BankDB.tt</DependentUpon>
     </Compile>

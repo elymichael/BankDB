@@ -15,7 +15,7 @@ namespace BankDB.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class BankDBEntities : DbContext
+    public partial class BankDBEntities : DbContext, IBankDBEntities
     {
         public BankDBEntities()
             : base("name=BankDBEntities")

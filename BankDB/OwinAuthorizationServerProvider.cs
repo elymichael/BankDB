@@ -23,6 +23,7 @@
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "Content-Type" });
 
@@ -32,16 +33,16 @@
             {
                 using (var db = new BankDBEntities())
                 {
-                   user = db.Users
-                  .Where(s => s.Email == context.UserName && s.Password == context.Password)
-                  .FirstOrDefault<User>();
+                    user = db.Users
+                   .Where(s => s.Email == context.UserName && s.Password == context.Password)
+                   .FirstOrDefault<User>();
                 }
             }
             catch (Exception ex)
             {
                 errorStatus = ex.Message;
             }
-           
+
             if (user == null)
             {
                 context.SetError("invalid_grant", errorStatus);

@@ -14,7 +14,13 @@ namespace BankDB.Controllers
 {
     public class RatingsController : ApiController
     {
-        private BankDBEntities db = new BankDBEntities();
+        private IBankDBEntities db = new BankDBEntities();
+
+        public RatingsController() { }
+
+        public RatingsController(IBankDBEntities ctx) {
+            db = ctx;
+        }
 
         // GET: api/Ratings
         public IQueryable<Rating> GetRatings()

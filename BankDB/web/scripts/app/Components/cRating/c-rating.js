@@ -2,7 +2,7 @@
     .module('app')
     .component('cRating', {
         templateUrl: 'scripts/app/Components/cRating/c-rating.html',        
-        controller: function ($http, ngAuthSettings, authService, appService, $state) {
+        controller: function ($http, ngAuthSettings, authService, appService, $state, $timeout) {
             var self = this;
             var serviceBase = ngAuthSettings.apiServiceGlobalUri;
 
@@ -24,8 +24,7 @@
                 self.data = {
                     Value: 1,
                     BranchId: self.parentId
-                };
-                debugger;
+                };                
                 self.hasData = false;
             };
 

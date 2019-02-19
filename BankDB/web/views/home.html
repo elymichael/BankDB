@@ -25,7 +25,7 @@
                         <div ng-repeat="x in Banks" ng-init="x.details = false">
                             <div class="card card-header">
                                 <div class="row">
-                                    <div class="col-2">{{x.RoutingNumber}} <em ng-class="{'fa fa-angle-up': x.details == true, 'fa fa-angle-down': x.details == false}" ng-click="x.details = !x.details"></em></div>
+                                    <div class="col-2" ng-click="x.details = !x.details">{{x.RoutingNumber}} <em ng-class="{'fa fa-angle-up': x.details == true, 'fa fa-angle-down': x.details == false}"></em></div>
                                     <div class="col-3">{{x.Name}}</div>
                                     <div class="col-5">{{x.Street}} {{x.ZipCode}}</div>
                                     <div class="col-2 text-center">

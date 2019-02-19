@@ -8,8 +8,13 @@
 
     public class UsersController : ApiController
     {
-        private BankDBEntities db = new BankDBEntities();
+        private IBankDBEntities db = new BankDBEntities();
 
+        public UsersController() { }
+        public UsersController(IBankDBEntities ctx)
+        {
+            db = ctx;
+        }
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {
