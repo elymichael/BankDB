@@ -56,7 +56,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UnitTestBanks.cs" />
+    <Compile Include="UnitTestBranches.cs" />
+    <Compile Include="UnitTestRatings.cs" />
+    <Compile Include="UnitTestUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

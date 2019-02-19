@@ -51,12 +51,14 @@
         };
 
         $scope.CheckUserRateBranch = function(x) {
-            var flag = false;            
-            if (authService.getUserData().Id > 0) {
-                var item = $filter('filter')(x.Ratings, { UserId: authService.getUserData().Id }, true);
+            var flag = false;      
+            if (authService.isAuth) {
+                if (authService.getUserData().Id > 0) {
+                    var item = $filter('filter')(x.Ratings, { UserId: authService.getUserData().Id }, true);
 
-                if (item.length >= 1) {
-                    flag = true;
+                    if (item.length >= 1) {
+                        flag = true;
+                    }
                 }
             }
             return flag;

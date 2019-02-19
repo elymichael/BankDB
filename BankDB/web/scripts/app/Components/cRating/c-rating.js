@@ -7,21 +7,25 @@
             var serviceBase = ngAuthSettings.apiServiceGlobalUri;
 
             self.$onInit = function () {
-                if (!self.id)
-                    self.id = "0";
+                $timeout(function () {
+                    if (!self.id)
+                        self.id = "0";
+                    
+                    if (!self.parentId)
+                        self.parentId = "0";
 
-                if (!self.parentId)
-                    self.parentId = "0";
-
-                initilize();
+                    initilize();
+                    }, 0);
             };
 
             function initilize() {
                 self.message = "";
                 self.isLoading = false;
                 self.data = {
-                    Value: 1
+                    Value: 1,
+                    BranchId: self.parentId
                 };
+                debugger;
                 self.hasData = false;
             };
 
@@ -50,7 +54,7 @@
         },
         bindings: {
             id: '<?',
-            parentId:'<?',
+            parentId:'=?',
             callbackSuccess: '&callbackSuccess',
             callbackCancel: '&callbackCancel'
         }

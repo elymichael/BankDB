@@ -48,7 +48,7 @@
         },
         bindings: {
             id: '<?',
-            parentId: '<?',
+            parentId: '=?',
             callbackSuccess: '&callbackSuccess',
             callbackCancel: '&callbackCancel'
         }
