@@ -127,6 +127,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\BankDB.mdf" />
+    <Content Include="App_Data\BankDB_log.ldf">
+      <DependentUpon>BankDB.mdf</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Models\BankDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -245,9 +249,7 @@
     <Content Include="web\fonts\fontawesome-webfont.woff2" />
     <Content Include="web\fonts\FontAwesome.otf" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

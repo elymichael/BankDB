@@ -14,12 +14,14 @@
                                     Routing Number:
                                 </label>
                                 <input type="text" class="form-control" id="bankrn" name="bankrn" ng-model="$ctrl.data.RoutingNumber" required />
+                                <div ng-show="$ctrl.formbank.bankrn.$touched && $ctrl.formbank.bankrn.$invalid" class="help-block with-errors">Bank routing number is required.</div>
                             </div>
                             <div class="form-group">
                                 <label>
                                     Name:
                                 </label>
                                 <input type="text" class="form-control" id="bankname" name="bankname" ng-model="$ctrl.data.Name" required />
+                                <div ng-show="$ctrl.formbank.bankname.$touched && $ctrl.formbank.bankname.$invalid" class="help-block with-errors">Bank routing number is required.</div>
                             </div>
                             <div class="form-group">
                                 <label>
