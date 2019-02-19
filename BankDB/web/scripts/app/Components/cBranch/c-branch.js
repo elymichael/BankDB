@@ -25,7 +25,7 @@
 
             self.save = function () {
                 self.isLoading = true;
-                debugger;
+                
                 self.data.Id = self.id;
                 self.data.BankId = self.parentId;
                 self.data.UserId = authService.getUserData().Id;

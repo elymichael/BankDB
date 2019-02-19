@@ -1,21 +1,20 @@
 ﻿angular
     .module('app')
     .component('cRating', {
-        templateUrl: 'scripts/app/Components/cRating/c-rating.html',        
+        templateUrl: 'scripts/app/Components/cRating/c-rating.html',
         controller: function ($http, ngAuthSettings, authService, appService, $state, $timeout) {
             var self = this;
             var serviceBase = ngAuthSettings.apiServiceGlobalUri;
 
             self.$onInit = function () {
-                $timeout(function () {
-                    if (!self.id)
-                        self.id = "0";
-                    
-                    if (!self.parentId)
-                        self.parentId = "0";
+                if (!self.id)
+                    self.id = "0";
 
-                    initilize();
-                    }, 0);
+                if (!self.parentId)
+                    self.parentId = "0";
+
+                initilize();
+
             };
 
             function initilize() {
@@ -24,13 +23,13 @@
                 self.data = {
                     Value: 1,
                     BranchId: self.parentId
-                };                
+                };
                 self.hasData = false;
             };
 
             self.save = function () {
                 self.isLoading = true;
-                debugger;
+
                 self.data.Id = self.id;
                 self.data.BranchId = self.parentId;
                 self.data.UserId = authService.getUserData().Id;
@@ -53,7 +52,7 @@
         },
         bindings: {
             id: '<?',
-            parentId:'=?',
+            parentId: '=?',
             callbackSuccess: '&callbackSuccess',
             callbackCancel: '&callbackCancel'
         }

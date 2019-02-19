@@ -35,7 +35,7 @@
                             </div>
                             <div ng-show="x.details">
                                 <div class="text-center">
-                                    <a href="#" data-toggle="modal" data-target="#branch" ng-class="{'adisabled' : !authentication.isAuth}" ng-click="bankId = x.Id">Add new Branch</a>
+                                    <a href="#" data-toggle="modal" data-target="#branch{{x.Id}}" ng-class="{'adisabled' : !authentication.isAuth}" ng-click="bankId = x.Id">Add new Branch</a>
                                     <c-branch parent-id="x.Id" callback-success="success()" callback-cancel="cancel()"></c-branch>
                                 </div>
                                 <div class="row" ng-repeat="y in x.Branches">
@@ -43,7 +43,7 @@
                                     <div class="col-5">{{y.Street}}</div>
                                     <div class="col-2 text-center">
                                         <div class="div-disabled" cd-rating rating-value="y.rating" max="5"></div>
-                                        <a href="#" data-toggle="modal" data-target="#rating" ng-class="{'adisabled' : !authentication.isAuth || CheckUserRateBranch(y)}" ng-click="branchId = y.Id">Rate</a>
+                                        <a href="#" data-toggle="modal" data-target="#rating{{y.Id}}" ng-class="{'adisabled' : !authentication.isAuth || CheckUserRateBranch(y)}" ng-click="branchId = y.Id">Rate</a>
                                         <c-rating parent-id="y.Id" callback-success="success()" callback-cancel="cancel()"></c-rating>
                                     </div>
                                 </div>
