@@ -87,6 +87,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -126,6 +128,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="Models\BankDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankDB.edmx</DependentUpon>
+      <LastGenOutput>BankDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BankDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BankDB.edmx</DependentUpon>
+      <LastGenOutput>BankDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="web\css\assets\bootstrap.min.css" />
     <Content Include="web\css\assets\font-awesome.min.css" />
@@ -156,6 +168,7 @@
     <Content Include="web\scripts\app\Controllers\MenuController.js" />
     <Content Include="web\scripts\app\directives\cdContainer\cd-container.html" />
     <Content Include="web\scripts\app\directives\cdContainer\cd-container.js" />
+    <Content Include="web\scripts\app\directives\cdRating\cdRating.js" />
     <Content Include="web\scripts\app\services\appServices.js" />
     <Content Include="web\scripts\app\services\authInterceptorService.js" />
     <Content Include="web\scripts\app\services\authService.js" />
@@ -175,19 +188,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\BankController.cs" />
-    <Compile Include="Controllers\BranchController.cs" />
-    <Compile Include="Controllers\RatingController.cs" />
+    <Compile Include="Controllers\BanksController.cs" />
+    <Compile Include="Controllers\BranchesController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Models\Bank.cs" />
-    <Compile Include="Models\Branch.cs" />
-    <Compile Include="Models\Rating.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Bank.cs">
+      <DependentUpon>BankDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Branch.cs">
+      <DependentUpon>BankDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rating.cs">
+      <DependentUpon>BankDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>BankDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="OwinAuthorizationServerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\BankDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BankDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BankDB.edmx.diagram">
+      <DependentUpon>BankDB.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -203,6 +246,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

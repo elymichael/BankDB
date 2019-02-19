@@ -27,8 +27,10 @@
             self.save = function () {
                 self.isLoading = true;
                 
-                self.data.id = self.id;                
-                $http.post(serviceBase + "User/", self.data).then(function (response) {
+                self.data.Id = self.id;    
+                $http.post(serviceBase + "Users/", JSON.stringify(self.data), {
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(function (response) {
                     self.isLoading = false;
                     self.data = {};
                     self.callbackSuccess();

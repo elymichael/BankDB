@@ -3,7 +3,7 @@
     .directive('cGridColumn', function ($compile) {
         return {
             restrict: 'E',
-            templateUrl: 'scripts/app/components/generico/cGridColumns/c-grid-column.html',
+            templateUrl: 'scripts/app/components/cGridColumns/c-grid-column.html',
             replace: true,
             scope: {
                 title: '@title',

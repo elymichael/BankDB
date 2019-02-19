@@ -5,18 +5,18 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                 </div>
-                <input type="email" placeholder="Email address..." class="form-control" ng-Model="$ctrl.loginData.userName" name="email" id="email" required autofocus />
+                <input type="email" placeholder="Email address..." class="form-control" ng-Model="$ctrl.loginData.userName" name="loginemail" id="loginemail" required autofocus />
             </div>
-            <div ng-show="$ctrl.form.email.$touched && $ctrl.form.email.$invalid" class="help-block with-errors">Invalid email address</div>
+            <div ng-show="$ctrl.form.loginemail.$touched && $ctrl.form.loginemail.$invalid" class="help-block with-errors">Invalid email address</div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
                 </div>
-                <input type="password" placeholder="Password..." class="form-control" ng-Model="$ctrl.loginData.password" name="password" id="password" ng-minlength="8" required />
+                <input type="password" placeholder="Password..." class="form-control" ng-Model="$ctrl.loginData.password" name="loginpassword" id="loginpassword" ng-minlength="8" required />
             </div>
-            <div ng-show="$ctrl.form.password.$touched && $ctrl.form.password.$invalid" class="help-block with-errors">Invalid password</div>
+            <div ng-show="$ctrl.form.loginpassword.$touched && $ctrl.form.loginpassword.$invalid" class="help-block with-errors">Invalid password</div>
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="rememberMe" ng-model="$ctrl.loginData.rememberMe">

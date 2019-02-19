@@ -2,11 +2,9 @@
     .module('app')
     .component('cBranch', {
         templateUrl: 'scripts/app/Components/cBranch/c-branch.html',
-        require: {
-            form: '^^form'
-        },
         controller: function ($http, ngAuthSettings, authService, appService, $state) {
             var self = this;
+            var serviceBase = ngAuthSettings.apiServiceGlobalUri;
 
             self.$onInit = function () {
                 if (!self.id)
@@ -27,16 +25,19 @@
             self.save = function () {
                 self.isLoading = true;
 
-                self.data.id = self.id;
-                //appService.saveData("Bank", self.data).then(function (response) {
-                //    self.isLoading = false;
-                //    self.data = {};
-                //    self.callbackSuccess();
-                //},
-                //    function (error) {
-                //        self.isLoading = false;
-                //        self.message = appService.getError(error);
-                //    });
+                self.data.Id = self.id;
+                self.data.UserId = 1;
+                $http.post(serviceBase + "Branches/", JSON.stringify(self.data), {
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(function (response) {
+                    self.isLoading = false;
+                    self.data = {};
+                    self.callbackSuccess();
+                },
+                    function (error) {
+                        self.isLoading = false;
+                        self.message = appService.getError(error);
+                    });
             };
 
             self.fillForm = function (_id) {
