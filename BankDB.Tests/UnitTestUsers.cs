@@ -32,7 +32,7 @@
             context.Users.Add(GetSingleItem());
 
             var controller = new UsersController(context);
-            var result = controller.GetUser(1) as OkNegotiatedContentResult<Rating>;
+            var result = controller.GetUser(1) as OkNegotiatedContentResult<User>;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Content.Id);
