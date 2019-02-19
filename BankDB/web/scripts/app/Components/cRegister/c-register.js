@@ -42,13 +42,15 @@
             };
 
             self.fillForm = function (_id) {
-                $http.get(serviceBase + "User/Get/" + _id).then(function (response) {                
-                    self.hasData = true;
-                    self.data = response.data;
-                },
-                    function (error) {
-                        self.message = appService.getError(error);
-                    });
+                if (_id > 0) {
+                    $http.get(serviceBase + "User/Get/" + _id).then(function (response) {
+                        self.hasData = true;
+                        self.data = response.data;
+                    },
+                        function (error) {
+                            self.message = appService.getError(error);
+                        });
+                };
             };
 
             self.cancel = function () {

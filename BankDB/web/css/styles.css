@@ -49,3 +49,31 @@ ul.rating {
 .clear {
     margin-top: 20px;
 }
+
+
+a.adisabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .45;
+}
+
+    a.adisabled:hover {
+        text-decoration: none;
+    }
+
+    a.adisabled:focus {
+        text-decoration: none;
+    }
+
+    a.adisabled:active {
+        text-decoration: none;
+    }
+
+.day-select {
+    border: none;
+}
+
+.div-disabled {
+    cursor: not-allowed;
+    pointer-events: none;    
+}

@@ -27,10 +27,10 @@
 
             self.save = function () {
                 self.isLoading = true;
-
+                debugger;
                 self.data.Id = self.id;
                 self.data.BranchId = self.parentId;
-                self.data.UserId = 1;
+                self.data.UserId = authService.getUserData().Id;
                 $http.post(serviceBase + "Ratings/", JSON.stringify(self.data), {
                     headers: { 'Content-Type': 'application/json' }
                 }).then(function (response) {

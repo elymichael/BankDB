@@ -10,6 +10,9 @@
                 if (!self.id)
                     self.id = "0";
 
+                if (!self.parentId)
+                    self.parentId = "0";
+
                 initilize();
             };
 
@@ -18,15 +21,14 @@
                 self.isLoading = false;
                 self.data = {};
                 self.hasData = false;
-
-                self.fillForm(self.id);
             };
 
             self.save = function () {
                 self.isLoading = true;
-
+                debugger;
                 self.data.Id = self.id;
-                self.data.UserId = 1;
+                self.data.BankId = self.parentId;
+                self.data.UserId = authService.getUserData().Id;
                 $http.post(serviceBase + "Branches/", JSON.stringify(self.data), {
                     headers: { 'Content-Type': 'application/json' }
                 }).then(function (response) {
@@ -39,23 +41,14 @@
                         self.message = appService.getError(error);
                     });
             };
-
-            self.fillForm = function (_id) {
-                //appService.getData("Bank", "Get", _id).then(function (response) {
-                //    self.hasData = true;
-                //    self.data = response.data;
-                //},
-                //    function (error) {
-                //        self.message = appService.getError(error);
-                //    });
-            };
-
+            
             self.cancel = function () {
                 self.callbackCancel();
             };
         },
         bindings: {
             id: '<?',
+            parentId: '<?',
             callbackSuccess: '&callbackSuccess',
             callbackCancel: '&callbackCancel'
         }

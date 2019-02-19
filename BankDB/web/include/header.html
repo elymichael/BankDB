@@ -17,17 +17,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login" ng-if="!authentication.isAuth">
                         Login
                     </a>
                 </li>
-                <li class="nav-item" href="#" data-toggle="modal" data-target="#register">
+                <li class="nav-item" href="#" data-toggle="modal" data-target="#register" ng-if="!authentication.isAuth">
                     <a class="nav-link" ui-sref="">
                         Register
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" ui-sref="">
+                <li class="nav-item" ng-if="authentication.isAuth">
+                    <a class="nav-link" ui-sref="" ng-click="logOut()">
                         Logout
                     </a>
                 </li>

@@ -5,8 +5,9 @@
         require: {
             form: '^^form'
         },
-        controller: function ($http, ngAuthSettings, authService, appService, $state) {
+        controller: function ($http, ngAuthSettings, authService, appService, $state, $http) {
             var self = this;
+            var serviceBase = ngAuthSettings.apiServiceGlobalUri;
 
             self.$onInit = function () {                
                 initilize();
@@ -25,8 +26,12 @@
             // Log in function
             self.login = function () {
                 self.isLoading = true;
-                authService.login(self.loginData).then(function (response) {                    
-                    self.isLoading = false;
+                authService.login(self.loginData).then(function (response) {    
+                    $http.get(serviceBase + 'Users/GetUserData').then(function (response) {                        
+                        authService.setUserData(response.data);
+                        self.isLoading = false;
+                        self.callbackSuccess();
+                    });
                 },
                 function (error) {
                     self.message = appService.getError(error);

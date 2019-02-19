@@ -26,7 +26,7 @@
                 self.isLoading = true;
 
                 self.data.Id = self.id;
-                self.data.UserId = 1;
+                self.data.UserId = authService.getUserData().Id;
                 debugger;
                 $http.post(serviceBase + "Banks/", JSON.stringify(self.data), {
                     headers: { 'Content-Type': 'application/json' }

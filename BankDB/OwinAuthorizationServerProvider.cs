@@ -5,10 +5,14 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
     using Microsoft.Owin.Security.OAuth;
-    using BankDB;    
+    using BankDB;
+    using BankDB.Models;
+    using System.Linq;
 
     public class OwinAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
+        private BankDBEntities db = new BankDBEntities();
+
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             await Task.Run(() =>
@@ -22,35 +26,36 @@
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "Content-Type" });
 
-            //Credenciales data = null;
-            //string errorStatus = "";
+            string errorStatus = "";
+            User user = null;
+            try
+            {
+                using (var db = new BankDBEntities())
+                {
+                   user = db.Users
+                  .Where(s => s.Email == context.UserName && s.Password == context.Password)
+                  .FirstOrDefault<User>();
+                }
+            }
+            catch (Exception ex)
+            {
+                errorStatus = ex.Message;
+            }
+           
+            if (user == null)
+            {
+                context.SetError("invalid_grant", errorStatus);
+                return;
+            }
 
-            //using (EntidadesController _repo = new EntidadesController())
-            //{
-            //    try
-            //    {
-            //        data = await _repo.Login(context.UserName, context.Password);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        errorStatus = ex.Message;
-            //    }
-            //}
+            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            identity.AddClaim(new Claim("sub", context.UserName));
+            identity.AddClaim(new Claim("role", "user"));
 
-            //if (data == null)
-            //{
-            //    context.SetError("invalid_grant", errorStatus);
-            //    return;
-            //}
+            if (user != null)
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
 
-            //var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            //identity.AddClaim(new Claim("sub", context.UserName));
-            //identity.AddClaim(new Claim("role", "user"));
-
-            //if (data != null)
-            //    identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, data.EntidadID.ToString()));
-
-            //context.Validated(identity);
+            context.Validated(identity);
         }
     }
 }

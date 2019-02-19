@@ -11,12 +11,11 @@ angular
             '</ul>',
         scope: {
             ratingValue: '=',
-            max: '='/*,
-            onRatingSelected: '&'*/
+            max: '='
         },
         link: function (scope, elem, attrs) {
 
-            var updateStars = function () {
+            var updateStars = function () {                
                 scope.stars = [];
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
@@ -27,9 +26,6 @@ angular
 
             scope.toggle = function (index) {
                 scope.ratingValue = index + 1;
-                //scope.onRatingSelected({
-                //    rating: index + 1
-                //});
             };
 
             scope.$watch('ratingValue', function (oldVal, newVal) {

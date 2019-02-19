@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using BankDB.Models;
-
-namespace BankDB.Controllers
+﻿namespace BankDB.Controllers
 {
+    using System.Linq;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using BankDB.Models;
+    using Microsoft.AspNet.Identity;
+
     public class UsersController : ApiController
     {
         private BankDBEntities db = new BankDBEntities();
@@ -27,6 +21,26 @@ namespace BankDB.Controllers
         public IHttpActionResult GetUser(int id)
         {
             User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        [Authorize]
+        [Route("api/Users/GetUserData")]
+        public IHttpActionResult GetUserData()
+        {
+            User user = null;
+            int id = User.Identity.GetUserId<int>();
+
+            if (id > 0)
+            {
+                user = db.Users.Find(id);
+            }
+
             if (user == null)
             {
                 return NotFound();
