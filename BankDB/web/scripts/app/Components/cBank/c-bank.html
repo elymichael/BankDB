@@ -21,7 +21,7 @@
                                     Name:
                                 </label>
                                 <input type="text" class="form-control" id="bankname" name="bankname" ng-model="$ctrl.data.Name" required />
-                                <div ng-show="$ctrl.formbank.bankname.$touched && $ctrl.formbank.bankname.$invalid" class="help-block with-errors">Bank routing number is required.</div>
+                                <div ng-show="$ctrl.formbank.bankname.$touched && $ctrl.formbank.bankname.$invalid" class="help-block with-errors">Bank name is required.</div>
                             </div>
                             <div class="form-group">
                                 <label>
@@ -36,7 +36,7 @@
                                 <input type="text" class="form-control" id="bankzipcode" name="bankzipcode" ng-model="$ctrl.data.ZipCode" />
                             </div>
                             <div class="form-group">
-                                <button ng-disabled="$ctrl.formbank.$invalid || $ctrl.isLoading" type="submit" class="btn btn-primary" ng-click="$ctrl.save()">Guardar</button>
+                                <button ng-disabled="$ctrl.formbank.$invalid || $ctrl.isLoading" type="submit" class="btn btn-primary" ng-click="$ctrl.save()">Save</button>
                             </div>
                         </div>
                     </div>
