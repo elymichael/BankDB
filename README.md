@@ -11,6 +11,7 @@ Framework: [.Net 4.6.1] Microsoft asp web api 2, Entity Framework 6.0, The secur
 Database: Microsoft SQL 2014, Local DB loaded in the project inside App_Data folder.
 
 <h2>Frontend side</h2>
+
 ![Swagger](./BankDB.Tests/Images/swagger.png)
 
 <b>Client framework used:</b> AngularJS 1.7, other JS libraries used: JQuery and Bootstrap for patter design. The logic of the client 
